@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Scatterplot</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">WQD7004</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="data_cleaning.html">Data Cleaning</a>
+</li>
+<li>
+  <a href="data_summary.html">Codebook</a>
+</li>
+<li>
+  <a href="data_exploration.html">Data Exploration</a>
+</li>
+<li>
+  <a href="scatterplot.html">Scatterplot</a>
+</li>
+<li>
+  <a href="data_modelling.html">Modelling</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Scatterplot</h1>
+
+</div>
+
+
+<pre class="r"><code>country_dataset &lt;- read.csv(&quot;data/imp_ses_efw.csv&quot;)</code></pre>
+<div id="scatter-plot" class="section level4">
+<h4>Scatter Plot</h4>
+<ul>
+<li><p>Area 1: Size of Government - As government spending, taxation, and the size of government-controlled enterprises increase, government decision-making is substituted for individual choice and economic freedom is reduced.</p></li>
+<li><p>Area 2: Legal System and Property Rights - Protection of persons and their rightfully acquired property is a central element of both economic freedom and civil society. Indeed, it is the most important function of government.</p></li>
+<li><p>Area 3: Sound Money - Inflation erodes the value of rightfully earned wages and savings. Sound money is thus essential to protect property rights. When inflation is not only high but also volatile, it becomes difficult for individuals to plan for the future and thus use economic freedom effectively.</p></li>
+<li><p>Area 4: Freedom to Trade Internationally - Freedom to exchange—in its broadest sense, buying, selling, making contracts, and so on—is essential to economic freedom, which is reduced when freedom to exchange does not include businesses and individuals in other nations.</p></li>
+<li><p>Area 5: Regulation - Governments not only use a number of tools to limit the right to exchange internationally, they may also develop onerous regulations that limit the right to exchange, gain credit, hire or work for whom you wish, or freely operate your business.</p></li>
+</ul>
+</div>
+<div id="major-areas-for-economic-freedom" class="section level3">
+<h3>Major areas for economic freedom</h3>
+<pre class="r"><code>options(repr.plot.width=8, repr.plot.height=4)
+plot_grid(ggplot(country_dataset, aes(X1_size_government, SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Size of Government&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = lm)+theme_bw(),
+          ggplot(country_dataset, aes(X2_property_rights, SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Property Rights&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = lm)+theme_bw(),
+          ggplot(country_dataset, aes(X3_sound_money, SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Sound Money&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = loess)+theme_bw(),
+          ggplot(country_dataset, aes(X4_trade , SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Trade&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = loess)+theme_bw(),
+          ggplot(country_dataset, aes(X5_regulation , SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Regulation&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = loess)+theme_bw(),
+          align = &#39;h&#39;)</code></pre>
+<p><img src="scatterplot_files/figure-html/X1-X5%20for%20all%20the%20years-1.png" width="1152" /></p>
+</div>
+<div id="area-1---size-of-government" class="section level3">
+<h3>Area 1 - Size of Government</h3>
+<pre class="r"><code>plot_grid(ggplot(country_dataset, aes(X1a_government_consumption, SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Government Consumption&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = lm)+theme_bw(),
+          ggplot(country_dataset, aes(X1b_transfers, SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Government transfers&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = lm)+theme_bw(),
+          ggplot(country_dataset, aes(X1c_gov_enterprises, SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Government enterprises&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = loess)+theme_bw(),
+          ggplot(country_dataset, aes(X1_size_government , SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Government size&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = loess)+theme_bw(),
+          align = &#39;h&#39;)</code></pre>
+<p><img src="scatterplot_files/figure-html/X1.for%20all%20the%20years-1.png" width="1152" /></p>
+</div>
+<div id="area-2-legal-system-and-property-rights" class="section level3">
+<h3>Area 2: Legal System and Property Rights</h3>
+<pre class="r"><code>options(repr.plot.width=8, repr.plot.height=4)
+plot_grid(ggplot(country_dataset, aes(X2c_protection_property_rights, SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Protection Property Rights&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = lm)+theme_bw(),
+          ggplot(country_dataset, aes(X2e_integrity_legal_system, SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Integrity Legal System&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = lm)+theme_bw(),
+          ggplot(country_dataset, aes(X2j_gender_adjustment, SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Gender Adjustments&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = loess)+theme_bw(),
+          ggplot(country_dataset, aes(X2_property_rights , SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Property Rights&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = loess)+theme_bw(),
+          align = &#39;h&#39;)</code></pre>
+<p><img src="scatterplot_files/figure-html/X2.for%20all%20the%20years-1.png" width="1152" /></p>
+</div>
+<div id="area-3-sound-money" class="section level3">
+<h3>Area 3: Sound Money</h3>
+<pre class="r"><code>options(repr.plot.width=8, repr.plot.height=4)
+plot_grid(ggplot(country_dataset, aes(X3a_money_growth, SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Money Growth&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = lm)+theme_bw(),
+          ggplot(country_dataset, aes(X3b_std_inflation, SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Standard Inflation&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = lm)+theme_bw(),
+          ggplot(country_dataset, aes(X3c_inflation, SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Inflation&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = loess)+theme_bw(),
+          ggplot(country_dataset, aes(X3d_freedom_own_foreign_currency, SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Freedom Own Foreign Currency&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = loess)+theme_bw(),
+          ggplot(country_dataset, aes(X3_sound_money , SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Sound Money&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = loess)+theme_bw(),
+          align = &#39;h&#39;)</code></pre>
+<p><img src="scatterplot_files/figure-html/X3.for%20all%20the%20years-1.png" width="1152" /></p>
+</div>
+<div id="area-4-freedom-to-trade-internationally" class="section level3">
+<h3>Area 4: Freedom to Trade Internationally</h3>
+<pre class="r"><code>options(repr.plot.width=8, repr.plot.height=4)
+plot_grid(ggplot(country_dataset, aes(X4a_tariffs, SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Tariffs&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = lm)+theme_bw(),
+          ggplot(country_dataset, aes(X4c_black_market, SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Black Market&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = lm)+theme_bw(),
+          ggplot(country_dataset, aes(X4d_control_movement_capital_ppl, SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Control Movement Capital People&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = loess)+theme_bw(),
+          ggplot(country_dataset, aes(X4_trade , SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Trade&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = loess)+theme_bw(),
+          align = &#39;h&#39;)</code></pre>
+<p><img src="scatterplot_files/figure-html/X4.for%20all%20the%20years-1.png" width="1152" /></p>
+</div>
+<div id="area-5-regulation" class="section level3">
+<h3>Area 5: Regulation</h3>
+<pre class="r"><code>options(repr.plot.width=8, repr.plot.height=4)
+plot_grid(ggplot(country_dataset, aes(X5a_credit_market_reg, SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Credit Market Regulation&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = lm)+theme_bw(),
+          ggplot(country_dataset, aes(X5_regulation , SES)) + 
+            geom_point(color=&#39;#E69F00&#39;, alpha = 0.5)+
+            xlab(&quot;Regulation&quot;) + ylab(&quot;Social Economic Status (SES)&quot;)+
+            geom_smooth(method = loess)+theme_bw(),
+          align = &#39;h&#39;)</code></pre>
+<p><img src="scatterplot_files/figure-html/X5.for%20all%20the%20years-1.png" width="1152" /></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

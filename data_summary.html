@@ -1,0 +1,2152 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>data_summary.utf8.md</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">WQD7004</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="data_cleaning.html">Data Cleaning</a>
+</li>
+<li>
+  <a href="data_summary.html">Codebook</a>
+</li>
+<li>
+  <a href="data_exploration.html">Data Exploration</a>
+</li>
+<li>
+  <a href="scatterplot.html">Scatterplot</a>
+</li>
+<li>
+  <a href="data_modelling.html">Modelling</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="data-report-overview" class="section level1">
+<h1>Data report overview</h1>
+<p>The dataset examined has the following dimensions:</p>
+<table style="width:47%;">
+<colgroup>
+<col width="34%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Number of observations</td>
+<td align="right">614</td>
+</tr>
+<tr class="even">
+<td align="left">Number of variables</td>
+<td align="right">30</td>
+</tr>
+</tbody>
+</table>
+<div id="checks-performed" class="section level3">
+<h3>Checks performed</h3>
+<p>The following variable checks were performed, depending on the data type of each variable:</p>
+<table>
+<colgroup>
+<col width="37%" />
+<col width="8%" />
+<col width="6%" />
+<col width="7%" />
+<col width="11%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="center">character</th>
+<th align="center">factor</th>
+<th align="center">labelled</th>
+<th align="center">haven labelled</th>
+<th align="center">numeric</th>
+<th align="center">integer</th>
+<th align="center">logical</th>
+<th align="center">Date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Identify miscoded missing values</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center"></td>
+<td align="center">×</td>
+</tr>
+<tr class="even">
+<td align="left">Identify prefixed and suffixed whitespace</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">Identify levels with &lt; 6 obs.</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">Identify case issues</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">Identify misclassified numeric or integer variables</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">Identify outliers</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center"></td>
+<td align="center">×</td>
+</tr>
+</tbody>
+</table>
+<p>Please note that all numerical values in the following have been rounded to 2 decimals.</p>
+</div>
+</div>
+<div id="codebook-summary-table" class="section level1">
+<h1>Codebook summary table</h1>
+<table>
+<colgroup>
+<col width="8%" />
+<col width="45%" />
+<col width="10%" />
+<col width="11%" />
+<col width="10%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Label</th>
+<th align="left">Variable</th>
+<th align="left">Class</th>
+<th align="right"># unique values</th>
+<th align="center">Missing</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><a href="#year">year</a></strong></td>
+<td align="left">integer</td>
+<td align="right">5</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong><a href="#wbid">wbid</a></strong></td>
+<td align="left">factor</td>
+<td align="right">138</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><a href="#unid">unid</a></strong></td>
+<td align="left">integer</td>
+<td align="right">138</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong><a href="#country">country</a></strong></td>
+<td align="left">factor</td>
+<td align="right">138</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><a href="#ses">SES</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">609</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong><a href="#gdppc">gdppc</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">596</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><a href="#popshare">popshare</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">614</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong><a href="#countries">countries</a></strong></td>
+<td align="left">factor</td>
+<td align="right">138</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><a href="#economic_freedom">ECONOMIC_FREEDOM</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">402</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong><a href="#rank">rank</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">208</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><a href="#quartile">quartile</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">23</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong><a href="#x1a_government_consumption">X1a_government_consumption</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">586</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><a href="#x1b_transfers">X1b_transfers</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">484</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong><a href="#x1c_gov_enterprises">X1c_gov_enterprises</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">32</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><a href="#x1_size_government">X1_size_government</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">613</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong><a href="#x2c_protection_property_rights">X2c_protection_property_rights</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">373</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><a href="#x2e_integrity_legal_system">X2e_integrity_legal_system</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">77</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong><a href="#x2j_gender_adjustment">X2j_gender_adjustment</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">56</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><a href="#x2_property_rights">X2_property_rights</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">545</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong><a href="#x3a_money_growth">X3a_money_growth</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">597</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><a href="#x3b_std_inflation">X3b_std_inflation</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">539</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong><a href="#x3c_inflation">X3c_inflation</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">568</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><a href="#x3d_freedom_own_foreign_currency">X3d_freedom_own_foreign_currency</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">7</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong><a href="#x3_sound_money">X3_sound_money</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">607</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><a href="#x4a_tariffs">X4a_tariffs</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">492</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong><a href="#x4c_black_market">X4c_black_market</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">60</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><a href="#x4d_control_movement_capital_ppl">X4d_control_movement_capital_ppl</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">243</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong><a href="#x4_trade">X4_trade</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">573</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong><a href="#x5a_credit_market_reg">X5a_credit_market_reg</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">532</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong><a href="#x5_regulation">X5_regulation</a></strong></td>
+<td align="left">numeric</td>
+<td align="right">603</td>
+<td align="center">0.00 %</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="variable-list" class="section level1">
+<h1>Variable list</h1>
+<div id="year" class="section level2">
+<h2>year</h2>
+<ul>
+<li>Note that this variable is treated as a factor variable below, as it only takes a few unique values.</li>
+</ul>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:50%;">
+<colgroup>
+<col width="36%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">integer</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="left">Mode</td>
+<td align="right">“2010”</td>
+</tr>
+<tr class="odd">
+<td align="left">Reference category</td>
+<td align="right">1970</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-1-year-1.png" width="384" /></p>
+</div>
+</div>
+<hr />
+</div>
+<div id="wbid" class="section level2">
+<h2>wbid</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:50%;">
+<colgroup>
+<col width="36%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">factor</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">138</td>
+</tr>
+<tr class="even">
+<td align="left">Mode</td>
+<td align="right">“AGO”</td>
+</tr>
+<tr class="odd">
+<td align="left">Reference category</td>
+<td align="right">AGO</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-2-wbid-1.png" width="384" /></p>
+</div>
+</div>
+<ul>
+<li>Note that the following levels have at most five observations: &quot;AGO&quot;, &quot;ALB&quot;, &quot;ARE&quot;, &quot;ARG&quot;, &quot;ARM&quot;, &quot;AUS&quot;, &quot;AUT&quot;, &quot;BDI&quot;, &quot;BEL&quot;, &quot;BEN&quot; (128 additional values omitted).</li>
+</ul>
+<hr />
+</div>
+<div id="unid" class="section level2">
+<h2>unid</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:51%;">
+<colgroup>
+<col width="36%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">integer</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">138</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">404</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">204; 620</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">8; 894</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-3-unid-1.png" width="384" /></p>
+</div>
+</div>
+<hr />
+</div>
+<div id="country" class="section level2">
+<h2>country</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:53%;">
+<colgroup>
+<col width="36%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">factor</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">138</td>
+</tr>
+<tr class="even">
+<td align="left">Mode</td>
+<td align="right">“Albania”</td>
+</tr>
+<tr class="odd">
+<td align="left">Reference category</td>
+<td align="right">Albania</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-4-country-1.png" width="384" /></p>
+</div>
+</div>
+<ul>
+<li>Note that the following levels have at most five observations: &quot;Albania&quot;, &quot;Algeria&quot;, &quot;Angola&quot;, &quot;Argentina&quot;, &quot;Armenia&quot;, &quot;Australia&quot;, &quot;Austria&quot;, &quot;Bahrain&quot;, &quot;Bangladesh&quot;, &quot;Belgium&quot; (128 additional values omitted).</li>
+</ul>
+<hr />
+</div>
+<div id="ses" class="section level2">
+<h2>SES</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:57%;">
+<colgroup>
+<col width="36%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">609</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">68.17</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">38.04; 82.15</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0.94; 97.55</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-5-SES-1.png" width="384" /></p>
+</div>
+</div>
+<ul>
+<li>Note that the following possible outlier values were detected: &quot;96.9&quot;, &quot;97&quot;, &quot;97.04&quot;, &quot;97.23&quot;, &quot;97.25&quot;, &quot;97.44&quot;, &quot;97.45&quot;, &quot;97.46&quot;, &quot;97.55&quot;.</li>
+</ul>
+<hr />
+</div>
+<div id="gdppc" class="section level2">
+<h2>gdppc</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:64%;">
+<colgroup>
+<col width="36%" />
+<col width="27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">596</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">6263.63</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">2329.75; 14415.83</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">447; 126144.72</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-6-gdppc-1.png" width="384" /></p>
+</div>
+</div>
+<ul>
+<li>Note that the following possible outlier values were detected: &quot;89727.04&quot;, &quot;107206.46&quot;, &quot;114518.83&quot;, &quot;126144.72&quot;.</li>
+</ul>
+<hr />
+</div>
+<div id="popshare" class="section level2">
+<h2>popshare</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:50%;">
+<colgroup>
+<col width="36%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">614</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">0; 0.01</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0; 0.23</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-7-popshare-1.png" width="384" /></p>
+</div>
+</div>
+<ul>
+<li>Note that the following possible outlier values were detected: &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot; (36 additional values omitted).</li>
+</ul>
+<hr />
+</div>
+<div id="countries" class="section level2">
+<h2>countries</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:53%;">
+<colgroup>
+<col width="36%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">factor</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">138</td>
+</tr>
+<tr class="even">
+<td align="left">Mode</td>
+<td align="right">“Albania”</td>
+</tr>
+<tr class="odd">
+<td align="left">Reference category</td>
+<td align="right">Albania</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-8-countries-1.png" width="384" /></p>
+</div>
+</div>
+<ul>
+<li>Note that the following levels have at most five observations: &quot;Albania&quot;, &quot;Algeria&quot;, &quot;Angola&quot;, &quot;Argentina&quot;, &quot;Armenia&quot;, &quot;Australia&quot;, &quot;Austria&quot;, &quot;Bahrain&quot;, &quot;Bangladesh&quot;, &quot;Belgium&quot; (128 additional values omitted).</li>
+</ul>
+<hr />
+</div>
+<div id="economic_freedom" class="section level2">
+<h2>ECONOMIC_FREEDOM</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:54%;">
+<colgroup>
+<col width="36%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">402</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">5.99</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">4.94; 7.01</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">2.66; 9.02</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-9-ECONOMIC-FREEDOM-1.png" width="384" /></p>
+</div>
+</div>
+<hr />
+</div>
+<div id="rank" class="section level2">
+<h2>rank</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:50%;">
+<colgroup>
+<col width="36%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">208</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">57.5</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">31; 88</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">1; 153</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-10-rank-1.png" width="384" /></p>
+</div>
+</div>
+<hr />
+</div>
+<div id="quartile" class="section level2">
+<h2>quartile</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:50%;">
+<colgroup>
+<col width="36%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">23</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">2; 4</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0.5; 4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-11-quartile-1.png" width="384" /></p>
+</div>
+</div>
+<hr />
+</div>
+<div id="x1a_government_consumption" class="section level2">
+<h2>X1a_government_consumption</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:54%;">
+<colgroup>
+<col width="36%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">586</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">6.34</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">4.53; 7.76</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0; 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-12-X1a-government-consumption-1.png" width="384" /></p>
+</div>
+</div>
+<hr />
+</div>
+<div id="x1b_transfers" class="section level2">
+<h2>X1b_transfers</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:54%;">
+<colgroup>
+<col width="36%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">484</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">8.51</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">5.93; 9.52</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0; 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-13-X1b-transfers-1.png" width="384" /></p>
+</div>
+</div>
+<hr />
+</div>
+<div id="x1c_gov_enterprises" class="section level2">
+<h2>X1c_gov_enterprises</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:50%;">
+<colgroup>
+<col width="36%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">32</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">2; 7</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0; 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-14-X1c-gov-enterprises-1.png" width="384" /></p>
+</div>
+</div>
+<hr />
+</div>
+<div id="x1_size_government" class="section level2">
+<h2>X1_size_government</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:54%;">
+<colgroup>
+<col width="36%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">613</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">5.77</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">4.69; 6.84</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">1.24; 9.75</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-15-X1-size-government-1.png" width="384" /></p>
+</div>
+</div>
+<ul>
+<li>Note that the following possible outlier values were detected: &quot;1.24&quot;, &quot;1.44&quot;.</li>
+</ul>
+<hr />
+</div>
+<div id="x2c_protection_property_rights" class="section level2">
+<h2>X2c_protection_property_rights</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:53%;">
+<colgroup>
+<col width="36%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">373</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">4.9</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">3.55; 6.7</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0; 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-16-X2c-protection-property-rights-1.png" width="384" /></p>
+</div>
+</div>
+<ul>
+<li>Note that the following possible outlier values were detected: &quot;0&quot;, &quot;0.3&quot;, &quot;0.5&quot;, &quot;0.55&quot;, &quot;0.8&quot;, &quot;1&quot;, &quot;1.04&quot;.</li>
+</ul>
+<hr />
+</div>
+<div id="x2e_integrity_legal_system" class="section level2">
+<h2>X2e_integrity_legal_system</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:53%;">
+<colgroup>
+<col width="36%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">77</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">6.67</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">3.33; 8.3</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0; 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-17-X2e-integrity-legal-system-1.png" width="384" /></p>
+</div>
+</div>
+<hr />
+</div>
+<div id="x2j_gender_adjustment" class="section level2">
+<h2>X2j_gender_adjustment</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:50%;">
+<colgroup>
+<col width="36%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">56</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">0.96</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">0.78; 1</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0; 1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-18-X2j-gender-adjustment-1.png" width="384" /></p>
+</div>
+</div>
+<hr />
+</div>
+<div id="x2_property_rights" class="section level2">
+<h2>X2_property_rights</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:54%;">
+<colgroup>
+<col width="36%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">545</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">5.12</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">3.57; 6.45</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0.31; 9.11</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-19-X2-property-rights-1.png" width="384" /></p>
+</div>
+</div>
+<hr />
+</div>
+<div id="x3a_money_growth" class="section level2">
+<h2>X3a_money_growth</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:54%;">
+<colgroup>
+<col width="36%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">597</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">8.57</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">7.34; 9.26</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0; 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-20-X3a-money-growth-1.png" width="384" /></p>
+</div>
+</div>
+<ul>
+<li>Note that the following possible outlier values were detected: &quot;9.96&quot;, &quot;9.97&quot;, &quot;9.97&quot;, &quot;9.97&quot;, &quot;9.97&quot;, &quot;9.98&quot;, &quot;9.98&quot;, &quot;9.98&quot;, &quot;9.99&quot;, &quot;10&quot; (1 additional values omitted).</li>
+</ul>
+<hr />
+</div>
+<div id="x3b_std_inflation" class="section level2">
+<h2>X3b_std_inflation</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:54%;">
+<colgroup>
+<col width="36%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">539</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">8.63</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">7.22; 9.29</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0; 9.89</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-21-X3b-std-inflation-1.png" width="384" /></p>
+</div>
+</div>
+<ul>
+<li>Note that the following possible outlier values were detected: &quot;9.8&quot;, &quot;9.8&quot;, &quot;9.81&quot;, &quot;9.82&quot;, &quot;9.83&quot;, &quot;9.83&quot;, &quot;9.84&quot;, &quot;9.84&quot;, &quot;9.85&quot;, &quot;9.85&quot; (3 additional values omitted).</li>
+</ul>
+<hr />
+</div>
+<div id="x3c_inflation" class="section level2">
+<h2>X3c_inflation</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:54%;">
+<colgroup>
+<col width="36%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">568</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">8.79</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">7.36; 9.41</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0; 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-22-X3c-inflation-1.png" width="384" /></p>
+</div>
+</div>
+<ul>
+<li>Note that the following possible outlier values were detected: &quot;9.9&quot;, &quot;9.9&quot;, &quot;9.92&quot;, &quot;9.92&quot;, &quot;9.93&quot;, &quot;9.93&quot;, &quot;9.95&quot;, &quot;9.95&quot;, &quot;9.96&quot;, &quot;9.96&quot; (4 additional values omitted).</li>
+</ul>
+<hr />
+</div>
+<div id="x3d_freedom_own_foreign_currency" class="section level2">
+<h2>X3d_freedom_own_foreign_currency</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:50%;">
+<colgroup>
+<col width="36%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">5</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">0; 10</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0; 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-23-X3d-freedom-own-foreign-currency-1.png" width="384" /></p>
+</div>
+</div>
+<hr />
+</div>
+<div id="x3_sound_money" class="section level2">
+<h2>X3_sound_money</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:54%;">
+<colgroup>
+<col width="36%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">607</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">7.01</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">6.02; 8.86</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0; 9.89</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-24-X3-sound-money-1.png" width="384" /></p>
+</div>
+</div>
+<ul>
+<li>Note that the following possible outlier values were detected: &quot;0&quot;, &quot;0.06&quot;, &quot;0.28&quot;, &quot;0.59&quot;, &quot;0.77&quot;, &quot;0.78&quot;, &quot;0.84&quot;, &quot;0.84&quot;, &quot;1.04&quot;, &quot;1.1&quot; (34 additional values omitted).</li>
+</ul>
+<hr />
+</div>
+<div id="x4a_tariffs" class="section level2">
+<h2>X4a_tariffs</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:54%;">
+<colgroup>
+<col width="36%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">492</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">7.14</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">4.91; 8.34</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0; 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-25-X4a-tariffs-1.png" width="384" /></p>
+</div>
+</div>
+<ul>
+<li>Note that the following possible outlier values were detected: &quot;9.87&quot;, &quot;9.87&quot;, &quot;9.91&quot;, &quot;9.92&quot;, &quot;9.93&quot;, &quot;9.95&quot;, &quot;9.99&quot;, &quot;10&quot;, &quot;10&quot;.</li>
+</ul>
+<hr />
+</div>
+<div id="x4c_black_market" class="section level2">
+<h2>X4c_black_market</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:50%;">
+<colgroup>
+<col width="36%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">60</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">7.4; 10</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0; 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-26-X4c-black-market-1.png" width="384" /></p>
+</div>
+</div>
+<hr />
+</div>
+<div id="x4d_control_movement_capital_ppl" class="section level2">
+<h2>X4d_control_movement_capital_ppl</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:50%;">
+<colgroup>
+<col width="36%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">243</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">2.09</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">0; 5.38</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0; 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-27-X4d-control-movement-capital-ppl-1.png" width="384" /></p>
+</div>
+</div>
+<hr />
+</div>
+<div id="x4_trade" class="section level2">
+<h2>X4_trade</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:53%;">
+<colgroup>
+<col width="36%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">573</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">6.32</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">4.4; 7.66</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0; 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-28-X4-trade-1.png" width="384" /></p>
+</div>
+</div>
+<hr />
+</div>
+<div id="x5a_credit_market_reg" class="section level2">
+<h2>X5a_credit_market_reg</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:54%;">
+<colgroup>
+<col width="36%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">532</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">7.33</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">5.24; 8.83</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">0; 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-29-X5a-credit-market-reg-1.png" width="384" /></p>
+</div>
+</div>
+<hr />
+</div>
+<div id="x5_regulation" class="section level2">
+<h2>X5_regulation</h2>
+<div class="row">
+<div class="col-lg-8">
+<table style="width:50%;">
+<colgroup>
+<col width="36%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable type</td>
+<td align="right">numeric</td>
+</tr>
+<tr class="even">
+<td align="left">Number of missing obs.</td>
+<td align="right">0 (0 %)</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of unique values</td>
+<td align="right">603</td>
+</tr>
+<tr class="even">
+<td align="left">Median</td>
+<td align="right">6.05</td>
+</tr>
+<tr class="odd">
+<td align="left">1st and 3rd quartiles</td>
+<td align="right">5.08; 7</td>
+</tr>
+<tr class="even">
+<td align="left">Min. and max.</td>
+<td align="right">1; 9.43</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="col-lg-4">
+<p><img src="data_summary_files/figure-html/Var-30-X5-regulation-1.png" width="384" /></p>
+</div>
+</div>
+<ul>
+<li>Note that the following possible outlier values were detected: &quot;1&quot;, &quot;1.46&quot;, &quot;1.58&quot;, &quot;1.66&quot;, &quot;9.38&quot;, &quot;9.43&quot;.</li>
+</ul>
+<hr />
+<p>Report generation information:</p>
+<ul>
+<li><p>Created by No Instance(s) Available. (username: <code>Danesh</code>).</p></li>
+<li><p>Report creation time: Sat May 25 2019 11:32:54</p></li>
+<li><p>Report was run from directory: <code>C:/Users/Danesh/Documents/RStudio/WQD7004-Group</code></p></li>
+<li><p>dataMaid v1.2.0 [Pkg: 2018-10-03 from CRAN (R 3.5.3)]</p></li>
+<li><p>R version 3.5.1 (2018-07-02).</p></li>
+<li><p>Platform: x86_64-w64-mingw32/x64 (64-bit)(Windows &gt;= 8 x64 (build 9200)).</p></li>
+<li><p>Function call: <code>makeDataReport(data = country_dataset, output = &quot;html&quot;, file = &quot;data_summary.Rmd&quot;,  replace = TRUE, standAlone = FALSE, codebook = TRUE)</code></p></li>
+</ul>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

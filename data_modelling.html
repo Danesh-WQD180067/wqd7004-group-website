@@ -241,6 +241,25 @@ $(document).ready(function () {
 <li>A correlation graph is used to identify attributes with high correlations.</li>
 <li>This is useful in modelling as the model can use fewer attributes in the model to make an accurate prediction.</li>
 </ul>
+<pre class="r"><code>country_dataset &lt;- read.csv(&quot;data/imp_ses_efw.csv&quot;)
+country_dataset &lt;- subset(country_dataset, select = -c(wbid,
+                                                       unid,
+                                                       country,
+                                                       countries,
+                                                       quartile,
+                                                       rank,
+                                                       popshare,
+                                                       gdppc,
+                                                       ECONOMIC_FREEDOM,
+                                                       X1_size_government,
+                                                       X2_property_rights,
+                                                       X3_sound_money,
+                                                       X4_trade,
+                                                       X5_regulation
+                                                       ))
+country_correlation &lt;- cor(select_if(country_dataset, is.numeric), use=&quot;complete.obs&quot;, method=&quot;kendall&quot;) 
+
+corrplot(country_correlation, method = &quot;circle&quot;, order = &quot;hclust&quot;, addrect = 3)</code></pre>
 <p><img src="data_modelling_files/figure-html/correlation-1.png" width="1152" /></p>
 </div>
 <div id="train-machine-learning-models" class="section level2">
@@ -1425,6 +1444,62 @@ kable(predictions)</code></pre>
 </ul></li>
 <li>If the model meets the above criteria, it will be considered a success.</li>
 </ul>
+<pre class="r"><code>    model_list &lt;- &quot;Logistic Regression&quot;
+    rmse_score &lt;- as.character(
+      rmse(predictions$test_data.SES,predictions$logistic)
+    )
+    rrse_score &lt;- as.character(
+      rrse(predictions$test_data.SES,predictions$logistic)
+    )
+    
+    model_list &lt;- append(model_list, &quot;GLMNET&quot;)
+    rmse_score &lt;-  append(
+      rmse_score, 
+      rmse(predictions$test_data.SES,predictions$glmnet)
+    )
+    rrse_score &lt;-  append(
+      rrse_score, 
+      rrse(predictions$test_data.SES,predictions$glmnet)
+    )
+
+    model_list &lt;- append(model_list, &quot;CART&quot;)
+    rmse_score &lt;-  append(
+      rmse_score, 
+      rmse(predictions$test_data.SES,predictions$cart)
+    )
+    rrse_score &lt;-  append(
+      rrse_score, 
+      rrse(predictions$test_data.SES,predictions$cart)
+    )
+
+    model_list &lt;- append(model_list, &quot;Treebag&quot;)
+    rmse_score &lt;-  append(
+      rmse_score, 
+      rmse(predictions$test_data.SES,predictions$treebag)
+    )
+    rrse_score &lt;-  append(
+      rrse_score, 
+      rrse(predictions$test_data.SES,predictions$treebag)
+    )
+
+    model_list &lt;- append(model_list, &quot;GBM&quot;)
+    rmse_score &lt;-  append(
+      rmse_score, 
+      rmse(predictions$test_data.SES,predictions$gbm)
+    )
+    rrse_score &lt;-  append(
+      rrse_score, 
+      rrse(predictions$test_data.SES,predictions$gbm)
+    )
+
+    
+    prediction &lt;- data.frame(model_list, rmse_score)
+    prediction2 &lt;- data.frame(model_list, rrse_score)
+    colnames(prediction)[1] &lt;- &quot;Model&quot;
+    colnames(prediction)[2] &lt;- &quot;RMSE&quot;
+    colnames(prediction2)[1] &lt;- &quot;Model&quot;
+    colnames(prediction2)[2] &lt;- &quot;RRSE&quot;
+    kable(prediction)</code></pre>
 <table>
 <thead>
 <tr class="header">

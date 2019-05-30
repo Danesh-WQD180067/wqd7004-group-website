@@ -1430,44 +1430,43 @@ kable(predictions)</code></pre>
 <tr class="header">
 <th align="left">Model</th>
 <th align="left">RMSE</th>
-<th align="left">RRSE</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left">Logistic Regression</td>
 <td align="left">17.8355430107563</td>
-<td align="left">0.602024619097772</td>
 </tr>
 <tr class="even">
 <td align="left">GLMNET</td>
 <td align="left">18.0271043052409</td>
-<td align="left">0.608490618774734</td>
 </tr>
 <tr class="odd">
 <td align="left">CART</td>
 <td align="left">21.9158804441193</td>
-<td align="left">0.739753175364846</td>
 </tr>
 <tr class="even">
 <td align="left">Treebag</td>
 <td align="left">17.6720721660914</td>
-<td align="left">0.596506790291909</td>
 </tr>
 <tr class="odd">
 <td align="left">GBM</td>
 <td align="left">16.75691996891</td>
-<td align="left">0.565616553163026</td>
 </tr>
 </tbody>
 </table>
 <pre class="r"><code>prediction$rmse &lt;- as.numeric(as.character(prediction$RMSE))
-prediction$rrse &lt;- as.numeric(as.character(prediction$RRSE))
-prediction &lt;- subset(prediction, select = -c(RRSE,RMSE))
+prediction &lt;- subset(prediction, select = -c(RMSE))
 prediction_m &lt;- gather(prediction, variable, value, -Model, convert = FALSE)
 ggplot(data = prediction_m, aes(x = variable, y = value, fill = Model)) +
-  geom_col(position = position_dodge())</code></pre>
+  geom_col(position = position_dodge()) + ylab(&quot;RMSE&quot;) + xlab(&quot;Model&quot;)</code></pre>
 <p><img src="data_modelling_files/figure-html/unnamed-chunk-4-1.png" width="1152" /></p>
+<pre class="r"><code>prediction2$rrse &lt;- as.numeric(as.character(prediction2$RRSE))
+prediction2 &lt;- subset(prediction2, select = -c(RRSE))
+prediction_m2 &lt;- gather(prediction2, variable, value, -Model, convert = FALSE)
+ggplot(data = prediction_m, aes(x = variable, y = value, fill = Model)) +
+  geom_col(position = position_dodge()) + ylab(&quot;RRSE&quot;) + xlab(&quot;Model&quot;)</code></pre>
+<p><img src="data_modelling_files/figure-html/unnamed-chunk-5-1.png" width="1152" /></p>
 </div>
 <div id="conclusions" class="section level2">
 <h2>Conclusions:</h2>
